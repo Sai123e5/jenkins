@@ -6,15 +6,13 @@ pipeline {
         disableConcurrentBuilds()
     }
 
-    stages {
-        stage('Inspect Repository') {
-            steps {
-                echo 'Inspecting the checked-out repository'
-                sh 'pwd'
-                sh 'ls -la'
-            }
-        }
-
+    stage('Show Build Details') {
+    steps {
+        echo "Job name: ${env.JOB_NAME}"
+        echo "Build number: ${env.BUILD_NUMBER}"
+        echo "Build URL: ${env.BUILD_URL}"
+    }
+}
         stage('Validate Source') {
             steps {
                 sh '''
